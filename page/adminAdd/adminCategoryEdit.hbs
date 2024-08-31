@@ -1,0 +1,34 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto shadow rouded p-4">
+            {{#if category}}
+            <form action="/admin/category/edit" method="POST">
+                <div class="mb-3">
+                    <label for="exampleFormControlInput1" class="form-label">ikonka</label>
+                    <input value="{{category.ikonka}}" type="text" class="form-control" id="exampleFormControlInput9"
+                        name="ikonka" required />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">title</label>
+                    <input value="{{category.title}}" type="text" class="form-control" id="exampleFormControlTextarea9" 
+                        name="title"></input>
+                        <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">comment</label>
+                    <input value="{{category.manzil}}" type="text" class="form-control" id="exampleFormControlTextarea9" 
+                        name="manzil"></input>
+                       <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">comment</label>
+                    <input value="{{category.comment}}" type="text" class="form-control" id="exampleFormControlTextarea9" 
+                        name="comment"></input> 
+                </div>
+                <input type="hidden" name="id" value="{{category.id}}">
+                <button class="btn btn-primary">Saqlash</button>
+                </form>
+                <form action="/admin/category/delete" method="POST">
+                <input type="hidden" name="id" value="{{category.id}}">
+                 <button type="submit" class="btn btn-danger my-4">O'chirish</button>
+                 </form>
+{{/if}}
+        </div>
+    </div>
+</div>

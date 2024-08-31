@@ -1,0 +1,184 @@
+<section class="product-wrapper pt-100 pb-70">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="mb-50">
+                        <h1 class="heading-1 font-weight-700">Featured Items</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {{#if feature.length}}
+                    {{#each feature}}
+                <div class="col-lg-4 col-sm-6">
+                    
+                    <div class="product-style-1 mt-30">
+                        <div class="product-image">
+                            <span class="icon-text text-style-1">NEW</span>
+                            <div class="product-active">
+                                <div class="product-item active">
+                                    <img src="../../images/feature/{{image}}" style="width: 500px; height:400px" alt="product">
+                                </div>
+                                {{#each batafsil}}
+                                <div class="product-item">
+                                    
+                                    <img src="../../images/sub/{{image2}}" style="width: 500px; height:400px" alt="product">
+                                    
+                                </div>
+                                {{/each}}
+                            </div>
+                            <a class="add-wishlist" href="javascript:void(0)">
+                                <i class="mdi mdi-heart-outline"></i>
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <h4 class="title"><a href="product-details-page.html">{{title}}</a></h4>
+                            <p>{{comment}}</p>
+                                    <p style="color: white;">{{price}} $</p>
+
+                           <form action="/cart/add" method="POST">
+							<input type="hidden" name="featureId" value="{{id}}">
+							{{!-- <input type="hidden" name="price" value="{{price}}"> --}}
+							<button>
+								<span class="icon-cross">
+									<img src="images/cart-7.svg" class="img-fluid">
+								</span>
+							</button>
+						</form>
+                        </div>
+                    </div>
+                    
+                </div>
+                {{/each}}
+                    {{else}}
+                <div class="col-lg-4 col-sm-6">
+                    <div class="product-style-1 mt-30">
+                        <div class="product-image">
+                            <span class="icon-text text-style-1">20% off</span>
+                            <div class="product-active">
+                                <div class="product-item active">
+                                    <img src="images/product-5.jpg" alt="product">
+                                </div>
+                                <div class="product-item">
+                                    <img src="images/product-6.jpg" alt="product">
+                                </div>
+                            </div>
+                            <a class="add-wishlist" href="javascript:void(0)">
+                                <i class="mdi mdi-heart-outline"></i>
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <h4 class="title"><a href="product-details-page.html">Lady Shoe</a></h4>
+                            <p>Reference 1103</p>
+                            <a href="javascript:void(0)" class="main-btn secondary-1-btn">
+                                <img src="images/cart-7.svg" alt="">
+                                $ 399
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="product-style-1 mt-30">
+                        <div class="product-image">
+                            <div class="product-active">
+                                <div class="product-item active">
+                                    <img src="images/product-3.jpg" alt="product">
+                                </div>
+                                <div class="product-item">
+                                    <img src="images/product-4_1.jpg" alt="product">
+                                </div>
+                            </div>
+                            <a class="add-wishlist" href="javascript:void(0)">
+                                <i class="mdi mdi-heart-outline"></i>
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <h4 class="title"><a href="product-details-page.html">Casio 09 Date</a></h4>
+                            <p>Reference 1112</p>
+                            <a href="javascript:void(0)" class="main-btn secondary-1-btn">
+                                <img src="images/cart-7.svg" alt="">
+                                $ 399
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="product-style-1 mt-30">
+                        <div class="product-image">
+                            <div class="product-active">
+                                <div class="product-item active">
+                                    <img src="images/product-7_1.jpg" alt="product">
+                                </div>
+                                <div class="product-item">
+                                    <img src="images/product-8.jpg" alt="product">
+                                </div>
+                            </div>
+                            <a class="add-wishlist" href="javascript:void(0)">
+                                <i class="mdi mdi-heart-outline"></i>
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <h4 class="title"><a href="product-details-page.html">Man's Shoe</a></h4>
+                            <p>Reference 102</p>
+                            <a href="javascript:void(0)" class="main-btn secondary-1-btn">
+                                <img src="images/cart-7.svg" alt="">
+                                $ 399
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="product-style-1 mt-30">
+                        <div class="product-image">
+                            <div class="product-active">
+                                <div class="product-item active">
+                                    <img src="images/product-9.jpg" alt="product">
+                                </div>
+                                <div class="product-item">
+                                    <img src="images/product-10.jpg" alt="product">
+                                </div>
+                            </div>
+                            <a class="add-wishlist" href="javascript:void(0)">
+                                <i class="mdi mdi-heart-outline"></i>
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <h4 class="title"><a href="product-details-page.html">Polo T Shirt</a></h4>
+                            <p>Reference 1202</p>
+                            <a href="javascript:void(0)" class="main-btn secondary-1-btn">
+                                <img src="images/cart-7.svg" alt="">
+                                $ 399
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6">
+                    <div class="product-style-1 mt-30">
+                        <div class="product-image">
+                            <span class="icon-text text-style-1">40% off</span>
+                            <div class="product-active">
+                                <div class="product-item active">
+                                    <img src="images/product-11_1.jpg" alt="product">
+                                </div>
+                                <div class="product-item">
+                                    <img src="images/product-12.jpg" alt="product">
+                                </div>
+                            </div>
+                            <a class="add-wishlist" href="javascript:void(0)">
+                                <i class="mdi mdi-heart-outline"></i>
+                            </a>
+                        </div>
+                        <div class="product-content text-center">
+                            <h4 class="title"><a href="product-details-page.html">Lotto T Shirt</a></h4>
+                            <p>Reference 112</p>
+                            <a href="javascript:void(0)" class="main-btn secondary-1-btn">
+                                <img src="images/cart-7.svg" alt="">
+                                $ 399
+                            </a>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+    </section>

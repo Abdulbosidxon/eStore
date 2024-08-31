@@ -1,0 +1,167 @@
+{{!-- <form action="/admin/recent/add">
+salom</form> --}}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mx-auto">
+      <form action="/admin/recent/add" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="exampleInputImage" class="form-label">Img</label>
+          <input name="image" type="file" class="form-control" id="fileInput" aria-describedby="emailHelp" accept="image/*" onchange="validateImageFile(this)">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Title</label>
+          <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail3" class="form-label">Comment</label>
+          <input name="comment" type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail3" class="form-label">Price</label>
+          <input name="price" type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" required>
+        </div>
+           <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">description</label>
+          <input name="description" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail3" class="form-label">like</label>
+          <input maxlength="5" minlength="1" name="like" type="number" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" required>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail3" class="form-label">btnName</label>
+          <input name="btnName" type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" required>
+        </div>
+        <button type="submit" class="btn btn-primary">SAVE</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+{{#if recent.length}}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">img</th>
+      <th scope="col">title</th>
+      <th scope="col">comment</th>
+      <th scope="col">price</th>
+       <th scope="col">descprition</th>
+      <th scope="col">like</th>
+      <th scope="col">btnName</th>
+      <th scope="col">tahrirlash</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each recent}}
+    <tr>
+      <th scope="row">{{id}}</th>
+      <td><img style="height: 100px;" src="../../images/recent/{{image}}" alt=""></td>
+      <td>{{title}}</td>
+      <td>{{comment}}</td>
+      <td>{{price}}</td>
+       <td>{{description}}</td>
+      <td>{{like}}</td>
+      <td>{{btnName}}</td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="toggleDropdown(this)">
+            Tarmoqlar ({{batafsil.length}})
+          </button>
+          <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {{#each batafsil}}
+            <li class="dropdown-item">
+              <div class="dropdown-content">
+                <span>{{@index}}</span>
+                <img src="../../images/sub/{{this.image2}}" alt="" style="max-width: 30px;">
+              </div>
+              <form action="/admin/recent/{{../id}}/sub/delete" method="post" class="delete-form">
+                <input type="hidden" name="recent_id" value="{{this.id}}">
+                <button type="submit" class="btn btn-link p-0">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </form>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </td>
+      <td><a href="/admin/recent/{{id}}/sub2" class="btn btn-success">Sub</a></td>
+      <td><a href="/admin/recent/{{id}}" class="btn btn-success">Edit</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+{{!Image}}
+{{/if}}
+
+<style>
+  .custom-dropdown-menu {
+    max-width: 350px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .custom-dropdown-menu .dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px 10px;
+  }
+  .custom-dropdown-menu .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 280px;
+  }
+  .custom-dropdown-menu .dropdown-content span {
+    font-size: 15px;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  .custom-dropdown-menu .dropdown-content .sub-name {
+    margin-top: 2px;
+  }
+  .custom-dropdown-menu .dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .delete-form {
+    margin-left: 10px;
+  }
+  .delete-form button {
+    background: none;
+    border: none;
+    color: #ed1707;
+  }
+</style>
+
+<script>
+  function validateImageFile(input) {
+    const file = input.files[0];
+    const allowedTypes = /(\.|\/)(gif|jpe?g|png)$/i;
+    if (!allowedTypes.test(file.type)) {
+      alert("Only image files (gif, jpg, jpeg, png) are allowed");
+      input.value = "";
+    }
+  }
+
+  function toggleDropdown(button) {
+    const dropdownMenu = button.nextElementSibling;
+    dropdownMenu.classList.toggle('show');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const deleteForms = document.querySelectorAll('.delete-form');
+    deleteForms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (confirm('Haqiqatan ham bu ma\'lumotni o\'chirmoqchimisiz?')) {
+          this.submit();
+        }
+      });
+    });
+  });
+</script>

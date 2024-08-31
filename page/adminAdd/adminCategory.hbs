@@ -1,0 +1,106 @@
+
+
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <form action="/admin/category/add" method="POST" class="shadow p-3 rounded">
+                <h2 class="text-center">Kategoriya qo'shish</h2>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Ikonka</label>
+                    <input name="ikonka" type="text" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">title</label>
+                    <input name="title" type="text" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">manzil</label>
+                    <input name="manzil" type="text" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">comment</label>
+                    <input name="comment" type="text" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp" required>
+                </div>
+                <input type="submit" value="Saqlash" class="btn btn-primary">
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Ikonka</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">URL</th>
+                        <th scope="col">Comment</th>
+                        <th scope="col">Tahrirlash</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#if category.length}}
+                    {{#each category}}
+                    <tr>
+                        <td>
+                            <i class="ri-{{ikonka}}"></i> {{ikonka}}
+                        </td>
+                        <td>{{title}}</td>
+                        <td>{{manzil}}</td>
+                        <td>{{comment}}</td>
+                        <td><a href="/admin/category/{{id}}" class="btn btn-success">Tahrirlash</a></td>
+                    </tr>
+                    {{/each}}
+                    {{else}}
+                    <tr>
+                        <td colspan="6" class="text-center">Kategoriya qo'shilmagan</td>
+                    </tr>
+                    {{/if}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+   
+              
+         
+<div class="container">
+    <div class="row">
+        {{#each ikonka_nomi}}
+        <div class="col-lg-3 mb-4 icon-container">
+            <p>
+                <i class="ri-{{this}} text-primary"></i> {{this}}
+            </p>
+        </div>
+        {{/each}}
+    </div>
+</div>
+
+<style>
+ 
+.icon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.icon-container i {
+    margin-right: 10px;
+    font-size: 1.5rem; /* Ikkonka o'lchamini oshirish */
+}
+
+.table td, .table th {
+    vertical-align: middle;
+}
+
+</style>

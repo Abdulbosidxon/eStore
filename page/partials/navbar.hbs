@@ -1,0 +1,147 @@
+{{#if menu.length}} 
+<div class="navigation">
+        <header class="menu-style-7 position-relative">
+          <div class="navbar-container navbar-sidebar-7">
+            <!-- navbar top Start -->
+            <div class="navbar-top-wrapper">
+              <div class="container-lg">
+                <div class="navbar-top d-flex justify-content-between">
+                  <!-- navbar top left Start -->
+                  <div class="navbar-top-left">
+                    <ul class="navbar-top-link">
+                      <li><a href="#0">About</a></li>
+                      <li><a href="#0">Help</a></li>
+                      <li><a href="#0">Contact</a></li>
+                      <li class="d-none d-md-block">
+                        <a href="#0"><i class="mdi mdi-phone-in-talk"></i> +8801234567890</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- navbar top left Ends -->
+                  <!-- navbar top right Start -->
+                  <div class="navbar-top-right">
+                    <ul class="navbar-top-link">
+                      <li>
+                        <select>
+                          <option value="0" selected="">$ USD</option>
+                          <option value="1">€ EURO</option>
+                          <option value="2">$ CAD</option>
+                          <option value="3">₹ INR</option>
+                          <option value="4">¥ CNY</option>
+                          <option value="5">৳ BDT</option>
+                        </select>
+                      </li>
+                      <li>
+                        <select>
+                          <option value="0" selected="">English</option>
+                          <option value="1">Español</option>
+                          <option value="2">Filipino</option>
+                          <option value="3">Français</option>
+                          <option value="4">العربية</option>
+                          <option value="5">हिन्दी</option>
+                          <option value="6">বাংলা</option>
+                        </select>
+                      </li>
+                      <li>
+                        <a href="#0"><i class="mdi mdi-account"></i>Login</a>
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- navbar top right Ends -->
+                </div>
+              </div>
+            </div>
+            <!-- navbar top Ends -->
+  
+            <!-- main navbar Start -->
+            <div class="navbar-wrapper">
+              <div class="container-lg">
+                <nav class="main-navbar d-lg-flex justify-content-between align-items-center">
+                  <!-- desktop logo Start -->
+                  <div class="desktop-logo d-lg-block">
+                    <a href="#0"><img src="images/logo.svg" alt="Logo"></a>
+                  </div>
+                  <!-- desktop logo Ends -->
+                  <div class="navbar-menu-toggle d-lg-block">
+                    <button id="toggle-menu-6" class="menu-toggle">
+                      <span class="toggle-icon"></span>
+                      <span class="toggle-icon"></span>
+                      <span class="toggle-icon"></span>
+                    </button>
+                  </div>
+                  <!-- navbar menu Start -->
+                  <div class="navbar-menu">
+                <ul class="main-menu">
+                      <div class="navbar-close d-lg-none text-right mb-3">
+                        <a href="#0" id="menu-close">
+                          <i class="mdi mdi-close"></i>
+                        </a>
+                      </div>
+        {{#each menu}}
+        {{#if activeHome}}
+        <li><a class="active" href="{{url}}">{{name}}</a></li>
+        {{else}}
+        <li><a href="{{url}}">{{name}}</a></li>
+        {{/if}}
+        {{/each}}
+      </ul>
+      <i class="bi bi-list mobile-nav-toggle"></i>
+      </ul>
+                  </div>
+
+{{else}}
+                  <!-- navbar menu Start -->
+                  <div class="navbar-menu">
+                <ul class="main-menu">
+                      <div class="navbar-close d-lg-none text-right mb-3">
+                        <a href="#0" id="menu-close">
+                          <i class="mdi mdi-close"></i>
+                        </a>
+                      </div>
+  
+                     
+                      <li><a href="/">Home</a></li>
+                      <li><a href="/about">About</a></li>
+                      <li><a href="/product">Product</a></li>
+                      <li><a href="/basket">Basket</a></li>
+                    
+                    
+                    </ul>
+                  </div>
+                  {{/if}}
+                  <!-- navbar menu Ends -->
+                  <div class="navbar-search-cart d-none d-lg-flex">
+                    <!-- navbar search start -->
+                    <div class="navbar-search search-style-5">
+                      <div class="search-select">
+                        <div class="select-position">
+                          <select id="select26">
+                            <option value="" selected="">All</option>
+                            <option value="1">option 01</option>
+                            <option value="2">option 02</option>
+                            <option value="3">option 03</option>
+                            <option value="4">option 04</option>
+                            <option value="5">option 05</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="search-input">
+                        <input type="text" placeholder="Search">
+                      </div>
+                      <div class="search-btn">
+                        <button><i class="lni lni-search-alt"></i></button>
+                      </div>
+                    </div>
+                    <!-- navbar search Ends -->
+                    <!-- navbar cart start -->
+                   
+                    <!-- navbar cart Ends -->
+                  </div>
+                </nav>
+              </div>
+            </div>
+            <!-- main navbar Ends -->
+          </div>
+          <div class="overlay-7"></div>
+        </header>
+      </div>

@@ -1,0 +1,21 @@
+{{#if comment.length}}
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Comment</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each comment}}
+    <tr>
+      <th scope="row">{{incr @index}}</th>
+      <td>{{{comment}}}</td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+Malumot qushilmagan
+{{/if}}

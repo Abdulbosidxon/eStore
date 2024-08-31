@@ -1,0 +1,52 @@
+{{!-- <form action="/admin/header/add">
+salom</form> --}}
+{{#if (katta awesomeT.length)}}
+Boshqa qiymat qo'shib bo'lmaydi
+{{else}}
+      <form action="/admin/awesomeT/add" method="POST">
+    
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">title</label>
+    <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    {{!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+  </div>
+  
+  <button type="submit" class="btn btn-primary">SAVE</button>
+</form>
+{{/if}}
+
+{{#if awesomeT.length}}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      {{!-- <th scope="col">img</th> --}}
+      <th scope="col">title</th>
+ 
+      <th scope="col">tahrirlash</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each awesomeT}}
+    <tr>
+      
+      <td>{{title}}</td>
+      
+      <td><a href="/admin/awesomeT/{{id}}"  class="btn btn-success">Edit</td>
+      
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+  {{!Image}}
+
+
+{{/if}}

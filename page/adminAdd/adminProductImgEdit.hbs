@@ -1,0 +1,13 @@
+<form action="/admin/productImg/edit" method="POST" enctype="multipart/form-data">
+  <div class="mb-3">
+    <label for="exampleInputImage" class="form-label">Img</label>
+    <input type="hidden" value="{{productImg.image}}" name="oldImg">
+    <input name="image" type="file" class="form-control" id="exampleInputImage" aria-describedby="emailHelp" accept="image/*">
+  </div>
+  <input name="id" type="hidden" value="{{productImg._id}}">
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+<form action="/admin/productImg/delete" method="post">
+    <input name="id" type="hidden" value="{{productImg._id}}">
+    <td><button class="btn btn-danger my-4">Delete</button></td>
+</form>

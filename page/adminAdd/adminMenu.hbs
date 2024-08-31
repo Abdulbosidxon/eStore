@@ -1,0 +1,75 @@
+<div class="container shadow rounded p-3">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      <h2 class="text-center">Menyu qo'shish</h2>
+      <form action="/admin/menu/add" method="POST">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Menyu nomi</label>
+          <input
+            name="name"
+            type="text"
+            class="form-control"
+            id="exampleInputEmail1"
+            aria-describedby="emailHelp"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail2" class="form-label">Menyu URL</label>
+          <input
+            name="url"
+            type="text"
+            class="form-control"
+            id="exampleInputEmail2"
+            aria-describedby="emailHelp"
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Sahifa</label>
+          <select name="sahifa" id="" required>
+            <option selected disabled>Sahifani tanlang</option>
+            {{#each faylname}}
+                  <option value="{{this}}" >{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <input type="submit" value="Saqlash" class="btn btn-primary">
+      </form>
+    </div>
+  </div>
+</div>
+
+   {{#if menu.length}}
+
+<table class="table table-striped my-5">
+  <thead>
+    <tr>
+      <th scope="col">№</th>
+      <th scope="col">name</th>
+      <th scope="col">url</th>
+      <th scope="col">sahifa </th>
+      <th scope="col">Tahrirlash</th>
+    </tr>
+  </thead>
+ <tbody>
+   {{#each menu}} 
+
+<tr>
+      
+      <td scope="col">{{incr @index}}</td>
+      <td scope="col">{{name}}</td>
+      <td scope="col">{{url}}</td>
+      <td scope="col">{{sahifa}}</td>
+     <td scope="col"><a href="/admin/menu/{{id}}" class="btn btn-success" class="btn btn-primary">Taharirlash</a></td>
+    </tr>
+
+      {{/each}} 
+    
+
+
+{{else}}
+  Ma'lumot qo'shilmagan
+{{/if}}
+ </tbody>
+</table>

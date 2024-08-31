@@ -1,0 +1,121 @@
+{{!-- <form action="/admin/footer/add">
+salom</form> --}}
+<form action="/admin/footer/add" method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input name="title" type="text" class="form-control" id="title" aria-describedby="emailHelp" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+{{#if footer.length}}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+     
+      <th scope="col">title</th>
+      
+      <th scope="col">tahrirlash</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each footer}}
+    <tr>
+      <th scope="row">{{id}}</th>
+     
+      <td>{{title}}</td>
+  
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" onclick="toggleDropdown(this)">
+            Tarmoqlar ({{batafsil.length}})
+          </button>
+          <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
+            {{#each batafsil}}
+            <li class="dropdown-item">
+              <div class="dropdown-content">
+                <span>{{@index}}</span>
+               <p>{{this.text}}</p>
+              </div>
+              <form action="/admin/footer/{{../id}}/sub4/delete" method="post" class="delete-form">
+                <input type="hidden" name="footer_id" value="{{this.id}}">
+                <button type="submit" class="btn btn-link p-0">
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </form>
+            </li>
+            {{/each}}
+          </ul>
+        </div>
+      </td>
+      <td><a href="/admin/footer/{{id}}/sub4" class="btn btn-success">sub</a></td>
+      <td><a href="/admin/footer/{{id}}" class="btn btn-success">Edit</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+{{else}}
+{{!Image}}
+{{/if}}
+<style>
+  .custom-dropdown-menu {
+    max-width: 350px;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+  .custom-dropdown-menu .dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 5px 10px;
+  }
+  .custom-dropdown-menu .dropdown-content {
+    display: flex;
+    flex-direction: column;
+    max-width: 280px;
+  }
+  .custom-dropdown-menu .dropdown-content span {
+    font-size: 15px;
+    white-space: normal;
+    word-wrap: break-word;
+  }
+  .custom-dropdown-menu .dropdown-content .sub4-name {
+    margin-top: 2px;
+  }
+  .custom-dropdown-menu .dropdown-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .delete-form {
+    margin-left: 10px;
+  }
+  .delete-form button {
+    background: none;
+    border: none;
+    color: #ed1707;
+  }
+</style>
+
+<script>
+ 
+  function toggleDropdown(button) {
+    const dropdownMenu = button.nextElementSibling;
+    dropdownMenu.classList.toggle('show');
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const deleteForms = document.querySelectorAll('.delete-form');
+    deleteForms.forEach(form => {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (confirm('Haqiqatan ham bu ma\'lumotni o\'chirmoqchimisiz?')) {
+          this.submit();
+        }
+      });
+    });
+  });
+</script>

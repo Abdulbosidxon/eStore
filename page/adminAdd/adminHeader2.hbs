@@ -1,0 +1,84 @@
+{{!-- <form action="/admin/header/add">
+salom</form> --}}
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mx-auto">
+      <form action="/admin/header2/add" method="POST" enctype="multipart/form-data">
+    <div class="mb-3">
+   <label for="exampleInputImage" class="form-label"> Img</label>
+    <input name="image"  type="file" class="form-control" id="fileInput" aria-describedby="emailHelp" accept="image/*" onchange="validateImageFile(this)">
+    {{!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">title</label>
+    <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    {{!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+  </div>
+  {{! BUTTON NAME}}
+  <div class="mb-3">
+   <label for="exampleInputEmail3" class="form-label">comment</label>
+    <input name="comment" type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" required>
+    {{!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+  </div>
+  <div class="mb-3">
+   <label for="exampleInputEmail3" class="form-label">price</label>
+    <input name="price" type="text" class="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" required>
+    {{!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> --}}
+  </div>
+  {{! BUTTON URL}}
+
+  {{!Image}}
+
+  {{! TUGMA}}
+  <button type="submit" class="btn btn-primary">SAVE</button>
+</form>
+    </div>
+  </div>
+</div>
+
+
+{{#if header2.length}}
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#id</th>
+      <th scope="col">img</th>
+      <th scope="col">title</th>
+      <th scope="col">comment</th>
+      <th scope="col">price</th>
+      <th scope="col">tahrirlash</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each header2}}
+    <tr>
+      <th scope="row">{{id}}</th>
+       <td><img style="height: 100px;" src="../../images/header2/{{image}}" alt=""></td>
+      <td>{{title}}</td>
+      <td>{{comment}}</td>
+      <td>{{price}}</td>
+      <td><a href="/admin/header2/{{id}}"  class="btn btn-success">Edit</td>
+      
+    </tr>
+    {{/each}}
+  </tbody>
+</table>
+
+{{else}}
+  {{!Image}}
+
+
+{{/if}}
+<script>
+  function validateImageFile(input) {
+    const file = input.files[0];
+    console.log(file);
+    const allowedTypes = /(\.|\/)(gif|jpe?g|png)$/i;
+
+    if (!allowedTypes.test(file.type)) {
+      alert("Only image files (gif, jpg, jpeg, png) are allowed");
+      input.value = "";
+    }
+  }
+</script>

@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-12 mx-auto">
+      <form action="/admin/recent/{{id}}/sub2/add" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="exampleInputImage" class="form-label">Img</label>
+          <input name="image2" type="file" class="form-control" id="fileInput" aria-describedby="emailHelp" accept="image/*" onchange="validateImageFile(this)">
+        </div>
+        <input type="hidden" value="{{id}}" name="recent_id">
+        <button type="submit" class="btn btn-primary">SAVE</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  function validateImageFile(input) {
+    const file = input.files[0];
+    const allowedTypes = /(\.|\/)(gif|jpe?g|png)$/i;
+    if (!allowedTypes.test(file.type)) {
+      alert("Only image files (gif, jpg, jpeg, png) are allowed");
+      input.value = "";
+    }
+  }
+</script>

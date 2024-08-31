@@ -1,0 +1,15 @@
+<form action="/admin/awesomeT/edit" method="post">
+
+            
+         <div class="mb-3">
+        <label for="exampleInputEmail4" class="form-label">title</label>
+        <input value="{{awesomeT.title}}" name="title" type="text" class="form-control" id="exampleInputEmail4"
+            aria-describedby="emailHelp" required>
+    </div>
+    <input name="id" type="hidden" value="{{awesomeT._id}}">
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+<form action="/admin/awesomeT/delete" method="post">
+    <input name="id" type="hidden" value="{{awesomeT._id}}">
+    <td><button class="btn btn-danger my-4">Delete</button></td>
+</form>

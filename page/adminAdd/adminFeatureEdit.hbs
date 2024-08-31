@@ -1,0 +1,28 @@
+<form action="/admin/feature/edit" method="post" enctype="multipart/form-data">
+<div class="mb-3">
+            <label for="exampleInputImage" class="form-label">Image</label>
+            <input type="hidden" value="{{feature.image}}" name="oldImg">
+            <input value="{{feature.image}}" name="image" type="file" class="form-control" id="exampleInputImage" aria-describedby="emailHelp">
+        </div>
+         <div class="mb-3">
+        <label for="exampleInputEmail4" class="form-label">title</label>
+        <input value="{{feature.title}}" name="title" type="text" class="form-control" id="exampleInputEmail4"
+            aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail3" class="form-label">comment</label>
+        <input value="{{feature.comment}}" name="comment" type="text" class="form-control" id="exampleInputEmail3"
+            aria-describedby="emailHelp" required>
+    </div>
+     <div class="mb-3">
+        <label for="exampleInputEmail3" class="form-label">price</label>
+        <input value="{{feature.price}}" name="price" type="text" class="form-control" id="exampleInputEmail3"
+            aria-describedby="emailHelp" required>
+    </div>
+    <input name="id" type="hidden" value="{{feature._id}}">
+    <button type="submit" class="btn btn-primary">Edit</button>
+</form>
+<form action="/admin/feature/delete" method="post">
+    <input name="id" type="hidden" value="{{feature._id}}">
+    <td><button class="btn btn-danger my-4">Delete</button></td>
+</form>

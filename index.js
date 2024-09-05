@@ -34,6 +34,7 @@ const hbs = exphbs.create({
     helpers: {
         incr: function (index) { return index + 1 },
         katta: function (index) { return index >= 1 },
+        header: function (index) { return index >= 2 },
         kopaytirish:function(a,b){
             return a * b;
         },

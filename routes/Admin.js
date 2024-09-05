@@ -16,7 +16,7 @@ const Product = require("../models/product");
 const Product2 = require("../models/product2");
 const Footer = require("../models/footer");
 const AwesomeT = require("../models/awesomeT");
-const ProductImg = require("../models/productImg");
+const ProductImg = require("../models/ProductImg");
 const fileFeature = require("../middelwere/fileFeature");
 const fileProductImg = require("../middelwere/fileProductImg");
 const Sub = require("../middelwere/sub");
@@ -405,6 +405,7 @@ router.get('/menu', async (req, res) => {
         res.status(500).send('An error occurred while reading the directory.');
     }
 });
+
 router.post("/menu/add" , async(req , res)=>{
     try {
         const menu = new Menu({
@@ -418,6 +419,7 @@ router.post("/menu/add" , async(req , res)=>{
         console.log(error)
     }
 });
+
 router.get("/menu/:id", Verification, async (req, res) => {
     try {
       const directoryPath = path.join(__dirname, '../page/');
@@ -436,6 +438,7 @@ router.get("/menu/:id", Verification, async (req, res) => {
       console.log(error);
     }
   });
+
   router.post("/menu/edit", Verification, async (req, res) => {
     try {
       await Menu.findByIdAndUpdate(req.body.id, req.body);
@@ -443,7 +446,8 @@ router.get("/menu/:id", Verification, async (req, res) => {
     } catch (error) {
       console.log(error);
     }
-  })
+  });
+
   router.post("/menu/delete", Verification, async (req, res) => {
     try {
       await Menu.findByIdAndDelete(req.body.id);
@@ -459,6 +463,7 @@ router.get("/menu/:id", Verification, async (req, res) => {
     
     res.render("adminAdd/adminFeature", { layout: "admin" , feature});
 });
+
 router.post("/feature/add",Verification, fileFeature, async (req, res) => {
     const feature = new Feature({
         title: req.body.title,
@@ -468,7 +473,7 @@ router.post("/feature/add",Verification, fileFeature, async (req, res) => {
     });
     await feature.save();
        res.redirect("/admin/feature");
-})
+});
    
 router.get("/feature/:id",Verification,  async (req, res) => {
     try {
@@ -478,6 +483,7 @@ router.get("/feature/:id",Verification,  async (req, res) => {
         console.log("error")
     }
 });
+
 router.post("/feature/edit",Verification, fileFeature, async (req, res) => {
     try {
         if (req.file) {
@@ -495,6 +501,7 @@ router.post("/feature/edit",Verification, fileFeature, async (req, res) => {
         console.log(error);
     }
 });
+
 router.post("/feature/delete",Verification, async (req, res) => {
     try {
         await Feature.findOneAndDelete(req.body.id);
@@ -503,6 +510,7 @@ router.post("/feature/delete",Verification, async (req, res) => {
         console.log(error);
     }
 });
+
 router.get("/feature/:id/sub", Sub, async (req, res) => {
     const featureId = req.params.id;
     const feature = await Feature.findById(featureId).populate("batafsil");
@@ -525,6 +533,8 @@ router.get("/feature/:id/sub", Sub, async (req, res) => {
     // console.log(feature.batafsil);
     res.redirect(`/admin/feature`);
   });
+
+
   router.post("/feature/:feature_id/sub/delete", async (req, res) => {
     try {
       const featureId = req.params.feature_id; // Correct parameter name
@@ -549,6 +559,7 @@ router.get("/recent",Verification, async (req, res) => {
     
     res.render("adminAdd/adminRecent", { layout: "admin" , recent});
 });
+
 router.post("/recent/add",Verification, fileRecent, async (req, res) => {
     const recent = new Recent({
         title: req.body.title,
@@ -561,7 +572,7 @@ router.post("/recent/add",Verification, fileRecent, async (req, res) => {
     });
     await recent.save();
        res.redirect("/admin/recent");
-})
+});
    
 router.get("/recent/:id",Verification,  async (req, res) => {
     try {
@@ -571,6 +582,7 @@ router.get("/recent/:id",Verification,  async (req, res) => {
         console.log("error")
     }
 });
+
 router.post("/recent/edit",Verification, fileRecent, async (req, res) => {
     try {
         if (req.file) {
@@ -588,6 +600,7 @@ router.post("/recent/edit",Verification, fileRecent, async (req, res) => {
         console.log(error);
     }
 });
+
 router.post("/recent/delete",Verification, async (req, res) => {
     try {
         await Recent.findOneAndDelete(req.body.id);
@@ -596,6 +609,8 @@ router.post("/recent/delete",Verification, async (req, res) => {
         console.log(error);
     }
 });
+
+
 router.get("/recent/:id/sub2", Sub2, async (req, res) => {
     const recentId = req.params.id;
     const recent = await Recent.findById(recentId).populate("batafsil");
@@ -618,6 +633,7 @@ router.get("/recent/:id/sub2", Sub2, async (req, res) => {
     // console.log(feature.batafsil);
     res.redirect(`/admin/recent`);
   });
+
   router.post("/recent/:recent_id/sub/delete", async (req, res) => {
     try {
       const recentId = req.params.recent_id; // Correct parameter name
@@ -635,6 +651,7 @@ router.get("/recent/:id/sub2", Sub2, async (req, res) => {
       res.status(500).send("Xatolik yuz berdi");
     }
   });
+
   // about
   router.get("/about",Verification, async (req, res) => {
     const about = await About.find();
@@ -651,7 +668,7 @@ router.post("/about/add",Verification, FileAbout, async (req, res) => {
     });
     await about.save();
     res.redirect("/admin/about");
-})
+});
    
 router.get("/about/:id",Verification,  async (req, res) => {
     try {
@@ -661,6 +678,7 @@ router.get("/about/:id",Verification,  async (req, res) => {
         console.log("error")
     }
 });
+
 router.post("/about/edit",Verification, FileAbout, async (req, res) => {
     try {
         if (req.file) {
@@ -678,6 +696,7 @@ router.post("/about/edit",Verification, FileAbout, async (req, res) => {
         console.log(error);
     }
 });
+
 router.post("/about/delete",Verification, async (req, res) => {
     try {
         await About.findOneAndDelete(req.body.id);
@@ -690,7 +709,7 @@ router.get("/product", Verification,async (req, res) => {
     const product = await Product.find();
     // console.log(header);
     res.render("adminAdd/adminProduct", { layout: "admin" , product});
-})
+});
 
 router.post("/product/add",Verification, fileProduct, async (req, res) => {
     const product = new Product({
@@ -700,7 +719,8 @@ router.post("/product/add",Verification, fileProduct, async (req, res) => {
     });
     await product.save();
     res.redirect("/admin/product");
-})
+});
+
 router.get("/product/:id",Verification,  async (req, res) => {
     try {
         const product = await Product.findById(req.params.id);
@@ -709,6 +729,7 @@ router.get("/product/:id",Verification,  async (req, res) => {
         console.log("error")
     }
 });
+
 router.post("/product/edit",Verification, fileProduct, async (req, res) => {
     try {
         if (req.file) {
@@ -726,6 +747,7 @@ router.post("/product/edit",Verification, fileProduct, async (req, res) => {
         console.log(error);
     }
 });
+
 router.post("/product/delete",Verification, async (req, res) => {
     try {
         await Product.findOneAndDelete(req.body.id);
@@ -734,6 +756,7 @@ router.post("/product/delete",Verification, async (req, res) => {
         console.log(error);
     }
 });
+
 router.get("/product/:id/sub3", Sub3, async (req, res) => {
     const productId = req.params.id;
     const product = await Product.findById(productId).populate("batafsil");
@@ -756,6 +779,7 @@ router.get("/product/:id/sub3", Sub3, async (req, res) => {
     // console.log(feature.batafsil);
     res.redirect(`/admin/product`);
   });
+
   router.post("/product/:product_id/sub/delete", async (req, res) => {
     try {
       const productId = req.params.product_id; // Correct parameter name
@@ -773,6 +797,7 @@ router.get("/product/:id/sub3", Sub3, async (req, res) => {
       res.status(500).send("Xatolik yuz berdi");
     }
   });
+
 router.get("/product2", Verification,async (req, res) => {
     const product2 = await Product2.find();
     // console.log(header);
@@ -786,7 +811,8 @@ router.post("/product2/add",Verification, fileProduct2, async (req, res) => {
     });
     await product2.save();
     res.redirect("/admin/product2");
-})
+});
+
 router.get("/product2/:id",Verification,  async (req, res) => {
     try {
         const product2 = await Product2.findById(req.params.id);
@@ -795,6 +821,7 @@ router.get("/product2/:id",Verification,  async (req, res) => {
         console.log("error")
     }
 });
+
 router.post("/product2/edit",Verification, fileProduct2, async (req, res) => {
     try {
         if (req.file) {
@@ -812,6 +839,7 @@ router.post("/product2/edit",Verification, fileProduct2, async (req, res) => {
         console.log(error);
     }
 });
+
 router.post("/product2/delete",Verification, async (req, res) => {
     try {
         await Product2.findOneAndDelete(req.body.id);
@@ -820,10 +848,12 @@ router.post("/product2/delete",Verification, async (req, res) => {
         console.log(error);
     }
 });
+
 router.get("/", verification, async (req, res) => {
     const comment = await Sms.find();
     res.render("admin", { layout: "admin" });
 });
+
 router.get("/comment", async (req, res) => {
     const comment = await Sms.find();
     // console.log(footer);
@@ -831,12 +861,13 @@ router.get("/comment", async (req, res) => {
         layout: "admin", comment
     })
 });
+
 // ProductImg
 router.get("/productImg", Verification,async (req, res) => {
     const productImg = await ProductImg.find();
     // console.log(header);
     res.render("adminAdd/adminProductImg", { layout: "admin" , productImg});
-})
+});
 
 router.post("/productImg/add",Verification, fileProductImg, async (req, res) => {
     const productImg = new ProductImg({
@@ -845,7 +876,8 @@ router.post("/productImg/add",Verification, fileProductImg, async (req, res) => 
     });
     await productImg.save();
     res.redirect("/admin/productImg");
-})
+});
+
 router.get("/productImg/:id",Verification,  async (req, res) => {
     try {
         const productImg = await ProductImg.findById(req.params.id);
@@ -874,6 +906,7 @@ router.post("/productImg/edit",Verification, fileProductImg, async (req, res) =>
         console.log(error);
     }
 });
+
 router.post("/productImg/delete",Verification, async (req, res) => {
     try {
         await ProductImg.findByIdAndDelete(req.body.id);
@@ -896,6 +929,7 @@ router.post("/footer/add",Verification, async (req, res) => {
     await footer.save();
     res.redirect("/admin/footer");
 })
+
 router.get("/footer/:id",Verification,  async (req, res) => {
     try {
         const footer = await Footer.findById(req.params.id);
@@ -904,6 +938,7 @@ router.get("/footer/:id",Verification,  async (req, res) => {
         console.log("error")
     }
 });
+
 router.post("/footer/edit",Verification, async (req , res) => {
     try {
         await Footer.findByIdAndUpdate(req.body.id , req.body);
@@ -912,6 +947,7 @@ router.post("/footer/edit",Verification, async (req , res) => {
         console.log(error)
     }
 });
+
 router.post("/footer/delete",Verification, async (req, res) => {
     try {
         await Footer.findOneAndDelete(req.body.id);
@@ -920,6 +956,7 @@ router.post("/footer/delete",Verification, async (req, res) => {
         console.log(error);
     }
 });
+
 router.get("/footer/:id/sub4", async (req, res) => {
     const footerId = req.params.id;
     const footer = await Footer.findById(footerId).populate("batafsil");
@@ -942,6 +979,7 @@ router.get("/footer/:id/sub4", async (req, res) => {
     // console.log(feature.batafsil);
     res.redirect(`/admin/footer`);
   });
+
   router.post("/footer/:footer_id/sub/delete", async (req, res) => {
     try {
       const footerId = req.params.footer_id; // Correct parameter name
